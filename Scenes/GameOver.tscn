@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/GameOver.gd" type="Script" id=1]
+
+[node name="GameOver" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 76.965
+margin_top = 35.9655
+margin_right = 252.965
+margin_bottom = 142.966
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 42.7272
+margin_top = 21.5796
+margin_right = 130.727
+margin_bottom = 35.5796
+text = "GAME OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 123.214
+margin_top = 91.4647
+margin_right = 193.214
+margin_bottom = 111.465
+text = "Try Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
