@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/pop.wav" type="AudioStream" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.23475, 0.596197 )
@@ -27,5 +28,8 @@ __meta__ = {
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.665009, 0.221669 )
 shape = SubResource( 2 )
+
+[node name="PopSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

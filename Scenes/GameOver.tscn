@@ -2,13 +2,18 @@
 
 [ext_resource path="res://Scenes/GameOver.gd" type="Script" id=1]
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="CanvasLayer"]
 script = ExtResource( 1 )
+
+[node name="EndGameMenu" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="EndGameMenu"]
 margin_left = 76.965
 margin_top = 35.9655
 margin_right = 252.965
@@ -17,7 +22,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="EndGameMenu/Panel"]
 margin_left = 42.7272
 margin_top = 21.5796
 margin_right = 130.727
@@ -27,14 +32,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 123.214
-margin_top = 91.4647
-margin_right = 193.214
-margin_bottom = 111.465
+[node name="Button" type="Button" parent="EndGameMenu/Panel"]
+margin_left = 46.249
+margin_top = 55.4992
+margin_right = 116.249
+margin_bottom = 75.4995
 text = "Try Again"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="EndGameMenu/Panel/Button" to="." method="_on_Button_pressed"]

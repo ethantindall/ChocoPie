@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Stats.gd" type="Script" id=1]
+[ext_resource path="res://images/heartSprite.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/oof.mp3" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "TakeDamage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[node name="Stats" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 235.025
+margin_top = 11.0905
+margin_right = 312.025
+margin_bottom = 25.0905
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 220.867, 18.1696 )
+texture = ExtResource( 2 )
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+anims/TakeDamage = SubResource( 1 )
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource( 3 )

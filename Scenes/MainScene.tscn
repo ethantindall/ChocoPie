@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://images/background.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/sideSandbag.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Targets/Grenade.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/GameOver.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Stats.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
@@ -42,15 +47,20 @@ position = Vector2( 62.8735, 140.694 )
 
 [node name="Backstop" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Backstop"]
-polygon = PoolVector2Array( 38.4391, 0.208748, 33.249, -0.258354, 32.8517, -14.9584, -12.7411, -16.0984, -16.1953, 184.241, -0.25, 207.75, 40.25, 207.25, 39.4994, 184.478, 47.25, 184.5, 45.75, 211.5, 0.25, 211.75, -23.635, 193.275, -26.5577, -24.0695, -8.07002, -25.2882, 36.295, -23.1692, 37.5982, -5.67753 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backstop"]
+position = Vector2( 13.8512, -23.5136 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Backstop"]
+position = Vector2( 22.2838, 211.552 )
+shape = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.1
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 22.2534, 31.0037 )
+position = Vector2( 17.2534, 23.7024 )
 
 [node name="HealthLabel" type="Label" parent="."]
 margin_left = 242.0
@@ -91,13 +101,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Grenade" parent="." instance=ExtResource( 6 )]
-position = Vector2( 84.907, 39.0889 )
-
 [node name="Grenade2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 257.291, 133.69 )
+position = Vector2( 86.6162, 28.1737 )
+
+[node name="Stats" parent="." instance=ExtResource( 8 )]
+margin_left = 4.29736
+margin_top = -6.03421
+margin_right = 4.29736
+margin_bottom = -6.03421
 
 [node name="GameOver" parent="." instance=ExtResource( 7 )]
-visible = false
+
+[node name="Grenade" parent="." instance=ExtResource( 6 )]
+position = Vector2( 55.3376, 26.2951 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

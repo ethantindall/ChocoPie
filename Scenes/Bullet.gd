@@ -14,7 +14,7 @@ func _physics_process(delta):
 	move_and_collide(movement * delta)
 	
 func bullet():
-	pass
+	$PopSound.play()
 
 
 func _on_Area2D_body_entered(body):

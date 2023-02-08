@@ -20,7 +20,8 @@ func _process(delta):
 	if Global.health <= 0:
 		var new_pause_state = not get_tree().paused
 		get_tree().paused = new_pause_state
-		$GameOver.visible = true
+		get_node("GameOver/EndGameMenu").visible = true
+
 	
 func _on_Timer_timeout():
 	var spawnHeight = int(round(rand_range(10, 170)))

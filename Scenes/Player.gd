@@ -38,6 +38,8 @@ func _physics_process(delta):
 			bullet.transform = transform
 			get_node("/root/MainScene").add_child(bullet)
 			connect_to_bullet(BULLET)         #Here I conect the new Bullet
+
+			$GunSound.play()
 		
 
 
@@ -48,4 +50,7 @@ func _on_BULLET_Hit():         #And here is the conection from the Bullet.
 		  print("Hello")
 
 func ouch():
-	pass
+	print("dang")
+	$AnimationPlayer.play("Injury")
+	$InjurySound.play()
+	

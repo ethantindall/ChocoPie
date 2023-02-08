@@ -1,7 +1,7 @@
 extends Node
 
 var score = 0
-var health = 1
+var health = 100
 var ammo = 25
 
 
