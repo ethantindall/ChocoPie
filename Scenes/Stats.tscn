@@ -1,14 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Stats.gd" type="Script" id=1]
 [ext_resource path="res://images/heartSprite.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/oof.mp3" type="AudioStream" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.588235, 0.105882, 0.105882, 1 )
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_detail = 5
+
+[sub_resource type="Animation" id=3]
 resource_name = "TakeDamage"
-length = 0.6
+length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,22 +46,33 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
 
+[node name="ScoreControl" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 margin_left = 235.025
 margin_top = 11.0905
 margin_right = 312.025
 margin_bottom = 25.0905
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 220.867, 18.1696 )
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer/HealthBar"]
+stream = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HealthBar"]
+anims/TakeDamage = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/HealthBar"]
+position = Vector2( -4.7431, 7.49621 )
+scale = Vector2( 1.65178, 1.65178 )
 texture = ExtResource( 2 )
 vframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-anims/TakeDamage = SubResource( 1 )
-
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
-stream = ExtResource( 3 )

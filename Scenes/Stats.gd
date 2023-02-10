@@ -8,12 +8,13 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if get_node("CanvasLayer/HealthBar").value > Global.health:
-		get_node("CanvasLayer/AnimationPlayer").play("TakeDamage")
-
+		get_node("CanvasLayer/HealthBar/AnimationPlayer").play("TakeDamage")
+	if $CanvasLayer/HealthBar.value <=30 :
+		$CanvasLayer/HealthBar/AnimationPlayer.play("TakeDamage")
 	get_node("CanvasLayer/HealthBar").value = Global.health

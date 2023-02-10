@@ -23,10 +23,12 @@ func _physics_process(delta):
 		#animationTree.set("parameters/Idle/blend_position", input_vector)
 		#animationTree.set("parameters/Move/blend_position", input_vector)
 		#animationState.travel("Move")
+		$AnimationPlayer.play("Walk")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 		
 	else:   
 		#animationState.travel("Idle")
+		#$AnimationPlayer.play("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
 	velocity = move_and_slide(velocity)
@@ -37,14 +39,13 @@ func _physics_process(delta):
 			var bullet =  BULLET.instance()
 			bullet.transform = transform
 			get_node("/root/MainScene").add_child(bullet)
-			connect_to_bullet(BULLET)         #Here I conect the new Bullet
+			bullet.set_position(Vector2(self.position[0]+20, self.position[1]+2))
 
+			$AnimationPlayer.play("Fire")
 			$GunSound.play()
 		
 
 
-func connect_to_bullet(BULLET):     #Here is the function as you sad
-		  BULLET.connect("Hit",self,"on_BULLET_Hit")    
 
 func _on_BULLET_Hit():         #And here is the conection from the Bullet.
 		  print("Hello")

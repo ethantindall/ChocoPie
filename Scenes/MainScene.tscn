@@ -55,22 +55,16 @@ shape = SubResource( 1 )
 position = Vector2( 22.2838, 211.552 )
 shape = SubResource( 2 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="BoostTimer" type="Timer" parent="."]
+
+[node name="QuestionTimer" type="Timer" parent="."]
+
+[node name="PieTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 17.2534, 23.7024 )
-
-[node name="HealthLabel" type="Label" parent="."]
-margin_left = 242.0
-margin_top = 5.0
-margin_right = 331.0
-margin_bottom = 24.0
-text = "HEALTH:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScoreLabel" type="Label" parent="."]
 margin_left = 242.0
@@ -102,7 +96,7 @@ __meta__ = {
 }
 
 [node name="Grenade2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 86.6162, 28.1737 )
+position = Vector2( 95.5456, 30.2284 )
 
 [node name="Stats" parent="." instance=ExtResource( 8 )]
 margin_left = 4.29736
@@ -113,6 +107,6 @@ margin_bottom = -6.03421
 [node name="GameOver" parent="." instance=ExtResource( 7 )]
 
 [node name="Grenade" parent="." instance=ExtResource( 6 )]
-position = Vector2( 55.3376, 26.2951 )
+position = Vector2( 214.68, 115.999 )
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="PieTimer" to="." method="_on_Timer_timeout"]
