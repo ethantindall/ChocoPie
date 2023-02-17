@@ -1,29 +1,29 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Stats.gd" type="Script" id=1]
 [ext_resource path="res://images/heartSprite.png" type="Texture" id=2]
 [ext_resource path="res://Sounds/oof.mp3" type="AudioStream" id=3]
+[ext_resource path="res://images/ammoCrateSprite.png" type="Texture" id=4]
+[ext_resource path="res://images/ammo/sprite_2.png" type="Texture" id=5]
+[ext_resource path="res://images/ammo/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/Black_Han_Sans/BlackHanSans-Regular.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.588235, 0.105882, 0.105882, 1 )
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.8, 0.8, 0.8, 0 )
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
+border_color = Color( 0, 0, 0, 0 )
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id=2]
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_detail = 5
+corner_detail = 1
 
 [sub_resource type="Animation" id=3]
 resource_name = "TakeDamage"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("../HeartSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,29 +35,53 @@ tracks/0/keys = {
 "values": [ 0, 1, 0 ]
 }
 
-[node name="Stats" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[sub_resource type="Theme" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "FirePop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+outline_size = 1
+font_data = ExtResource( 7 )
+
+[node name="Stats" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 4
+[node name="HealthNode" type="CanvasLayer" parent="."]
+scale = Vector2( 0.8, 0.8 )
+transform = Transform2D( 0.8, 0, 0, 0.8, 0, 0 )
 
-[node name="ScoreControl" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
-margin_left = 235.025
-margin_top = 11.0905
-margin_right = 312.025
-margin_bottom = 25.0905
+[node name="HealthBar" type="ProgressBar" parent="HealthNode"]
+margin_left = 373.137
+margin_top = 208.097
+margin_right = 450.137
+margin_bottom = 223.097
+rect_rotation = 270.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
@@ -65,14 +89,119 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer/HealthBar"]
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="HealthNode/HealthBar"]
 stream = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HealthBar"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthNode/HealthBar"]
 anims/TakeDamage = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="CanvasLayer/HealthBar"]
-position = Vector2( -4.7431, 7.49621 )
+[node name="Panel" type="Panel" parent="HealthNode/HealthBar"]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = -1.0
+margin_right = 76.0
+margin_bottom = 14.0
+theme = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="HealthNode/HealthBar"]
+position = Vector2( -0.5, -1 )
+color = Color( 0, 0, 0, 0.392157 )
+polygon = PoolVector2Array( 9.18851, 1.2959, 7.41113, -0.547607, 5.75935, -1.96341, 5.87735, -3.6152, 0.85466, -3.6647, 0.85466, -2.02771, -0.776077, -2.00891, -0.782349, -0.440308, -2.46896, -0.440308, -2.45842, 1.24426, -4.15558, 1.24631, -4.15558, 2.93292, -5.76735, 2.91263, -5.79259, 4.56992, -7.4296, 4.56992, -7.47539, 6.19742, -9.1162, 6.20694, -9.1162, 9.53055, -7.4296, 9.53055, 7.35309, 6.10773, 9.08929, 6.15732, 9.08929, 4.61954, 10.6767, 4.56992 )
+
+[node name="HeartSprite" type="Sprite" parent="HealthNode"]
+position = Vector2( 379.354, 206.968 )
 scale = Vector2( 1.65178, 1.65178 )
 texture = ExtResource( 2 )
 vframes = 2
+
+[node name="AmmoNode" type="Node2D" parent="."]
+position = Vector2( 57, 41 )
+scale = Vector2( 0.8, 0.7 )
+
+[node name="AmmoSprite" type="Sprite" parent="AmmoNode"]
+light_mask = 2
+position = Vector2( 281.061, 132 )
+rotation = 1.5708
+scale = Vector2( 0.45, 0.45 )
+z_index = 3
+texture = ExtResource( 6 )
+
+[node name="Panel" type="Panel" parent="AmmoNode/AmmoSprite"]
+show_behind_parent = true
+margin_left = -91.0
+margin_top = -16.0
+margin_right = 92.0
+margin_bottom = 17.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="AmmoNode/AmmoSprite/Panel"]
+show_behind_parent = true
+margin_left = 2.22223
+margin_top = 2.22223
+margin_right = 185.222
+margin_bottom = 35.2222
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoMask" type="Light2D" parent="AmmoNode"]
+position = Vector2( 281, 132.99 )
+scale = Vector2( 0.104536, 3.26805 )
+z_index = 3
+texture = ExtResource( 5 )
+mode = 3
+range_item_cull_mask = 2
+
+[node name="CrateSprite" type="Sprite" parent="AmmoNode"]
+position = Vector2( 199.127, 166.985 )
+scale = Vector2( 1.4, 1.4 )
+z_index = 3
+texture = ExtResource( 4 )
+offset = Vector2( 56.8532, 9.85521 )
+vframes = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="AmmoNode/CrateSprite"]
+show_behind_parent = true
+position = Vector2( -0.922516, 1.05429 )
+color = Color( 0, 0, 0, 0.392157 )
+polygon = PoolVector2Array( 48.8586, 10.8351, 49.8451, 10.8404, 49.8637, 15.8417, 65.8447, 15.8537, 65.8314, 5.23398, 52.3603, 2.86319, 49.8701, 2.86319, 49.8631, 4.85617, 48.8656, 4.84821 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AmmoNode/CrateSprite"]
+anims/FirePop = SubResource( 8 )
+
+[node name="AmmoProgressBar" type="ProgressBar" parent="AmmoNode"]
+visible = false
+margin_left = 279.996
+margin_top = 127.891
+margin_right = 283.996
+margin_bottom = 141.891
+max_value = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreNode" type="Node2D" parent="."]
+position = Vector2( 281.219, 5.6027 )
+z_index = 2
+
+[node name="ScoreLabel" type="Label" parent="ScoreNode"]
+margin_right = 31.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "00"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="HealthNode/HealthBar" to="." method="_on_HealthBar_value_changed"]
+[connection signal="value_changed" from="AmmoNode/AmmoProgressBar" to="." method="_on_AmmoProgressBar_value_changed"]

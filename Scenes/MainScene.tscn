@@ -6,26 +6,41 @@
 [ext_resource path="res://Scenes/MainScene.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Targets/Grenade.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/GameOver.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/GUI/GameOver.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Stats.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25.0188, 10 )
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_right = 368.0
+margin_bottom = 29.0
+color = Color( 0.784314, 0.301961, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -20.6932, -31.3302 )
+scale = Vector2( 1, 0.5 )
+color = Color( 0.266667, 0.266667, 0.266667, 1 )
+polygon = PoolVector2Array( 131.181, 74.0758, 131.516, 117.612, 107.739, 117.947, 107.739, 94.5043, 87.3101, 94.8392, 86.9752, 74.7456, 70.5654, 74.7456, 70.2305, 99.8626, 41.0947, 100.198, 40.7598, 90.4856, 33.727, 90.1507, 33.3921, 78.0945, 14.3032, 78.0945, 14.3032, 95.8439, -5.79048, 95.8439, -8.89547, 130.028, 349.893, 129.45, 351.749, 42.4184, 304.275, 57.1328, 304.321, 103.546, 295.614, 103.546, 289.251, 95.1741, 279.874, 104.216, 266.478, 104.551, 266.144, 87.8064, 249.734, 88.1413, 248.729, 110.244, 227.631, 109.909, 226.961, 68.7175, 214.235, 68.7175, 215.24, 89.4809, 196.151, 89.4809, 195.481, 69.0524, 177.397, 69.0524, 177.062, 83.1179, 159.982, 83.1179, 159.312, 98.523, 142.903, 98.523, 142.903, 74.4107 )
+
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 0.669785, 1.25992 )
+show_behind_parent = true
+position = Vector2( 131.243, 72.6736 )
 scale = Vector2( 0.373048, 0.316042 )
 texture = ExtResource( 1 )
 centered = false
+offset = Vector2( -352.165, -136.425 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 880, 580 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="SideSandbags3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 49.9685, 69.2592 )
@@ -34,13 +49,13 @@ position = Vector2( 49.9685, 69.2592 )
 position = Vector2( 63.4688, 95.4534 )
 
 [node name="SideSandbags4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63.6672, 31.9573 )
-
-[node name="SideSandbags5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 42.8326, 8.54314 )
+position = Vector2( 70.6751, 45.3057 )
 
 [node name="SideSandbags" parent="." instance=ExtResource( 2 )]
 position = Vector2( 49.8669, 168.674 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 17.2534, 90.7024 )
 
 [node name="BigCrate" parent="." instance=ExtResource( 3 )]
 position = Vector2( 62.8735, 140.694 )
@@ -48,43 +63,16 @@ position = Vector2( 62.8735, 140.694 )
 [node name="Backstop" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Backstop"]
-position = Vector2( 13.8512, -23.5136 )
+position = Vector2( 12.6108, -11.9231 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Backstop"]
 position = Vector2( 22.2838, 211.552 )
 shape = SubResource( 2 )
 
-[node name="BoostTimer" type="Timer" parent="."]
-
-[node name="QuestionTimer" type="Timer" parent="."]
-
 [node name="PieTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 3.0
 autostart = true
-
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 17.2534, 23.7024 )
-
-[node name="ScoreLabel" type="Label" parent="."]
-margin_left = 242.0
-margin_top = 21.0
-margin_right = 331.0
-margin_bottom = 40.0
-text = "SCORE:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AmmoLabel" type="Label" parent="."]
-margin_left = 241.88
-margin_top = 39.0898
-margin_right = 288.88
-margin_bottom = 53.0898
-text = "AMMO:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Backstop2" type="StaticBody2D" parent="."]
 position = Vector2( 363, 0 )
@@ -95,18 +83,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Grenade2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 95.5456, 30.2284 )
-
 [node name="Stats" parent="." instance=ExtResource( 8 )]
-margin_left = 4.29736
-margin_top = -6.03421
-margin_right = 4.29736
-margin_bottom = -6.03421
 
 [node name="GameOver" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="Grenade" parent="." instance=ExtResource( 6 )]
-position = Vector2( 214.68, 115.999 )
+position = Vector2( 66.5551, 90.5097 )
+
+[node name="Grenade2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 54.7567, 115.522 )
+
+[node name="Stopwatch" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="PieTimer" to="." method="_on_Timer_timeout"]

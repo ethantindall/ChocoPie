@@ -1,8 +1,9 @@
 extends Node
 
 var score = 0
-var health = 100
-var ammo = 25
+var maxHealth = 100
+var health = maxHealth
+var ammo = 20
 
 
 # Called when the node enters the scene tree for the first time.

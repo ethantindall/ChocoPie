@@ -8,7 +8,6 @@ var velocity = Vector2.ZERO
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
-onready var animationState = animationTree.get("parameters/playback")
 onready var BULLET = preload("res://Scenes/Bullet.tscn")
 
 
@@ -30,6 +29,8 @@ func _physics_process(delta):
 		#animationState.travel("Idle")
 		#$AnimationPlayer.play("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		if $AnimationPlayer.is_playing() == false:
+			$AnimationPlayer.play("Idle")	
 		
 	velocity = move_and_slide(velocity)
 
@@ -41,7 +42,7 @@ func _physics_process(delta):
 			get_node("/root/MainScene").add_child(bullet)
 			bullet.set_position(Vector2(self.position[0]+20, self.position[1]+2))
 
-			$AnimationPlayer.play("Fire")
+			$AnimationPlayer2.play("Fire")
 			$GunSound.play()
 		
 
