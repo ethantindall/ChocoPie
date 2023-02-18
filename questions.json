@@ -1,0 +1,50 @@
+{ "Questions": 
+	{ "SKATS": 
+	[
+			{
+				"Prompt": "In SKATS, what letter is ㅑ?",
+				"Answer1":"I",
+				"Answer2":"R",
+				"Answer3":"E",
+				"Answer4":"A",
+				"Correct": "I" },
+			{
+				"Prompt": "In SKATS, what letter is ㄹ?",
+				"Answer1":"Q",
+				"Answer2":"V",
+				"Answer3":"B",
+				"Answer4":"N",
+				"Correct": "V" },
+			{
+				"Prompt": "In SKATS, what letter is ㄱ?",
+				"Answer1":"R",
+				"Answer2":"H",
+				"Answer3":"K",
+				"Answer4":"L",
+				"Correct": "L" },
+			{
+				"Prompt": "In SKATS, what letter is ㄴ?",
+				"Answer1":"E",
+				"Answer2":"F",
+				"Answer3":"K",
+				"Answer4":"P",
+				"Correct": "F" },
+			{
+				"Prompt": "In SKATS, what letter is ㄷ?",
+				"Answer1":"X",
+				"Answer2":"B",
+				"Answer3":"J",
+				"Answer4":"Y",
+				"Correct": "B" },
+			{
+				"Prompt": "In SKATS, what letter is ㅁ?",
+				"Answer1":"M",
+				"Answer2":"W",
+				"Answer3":"Z",
+				"Answer4":"L",
+				"Correct": "M" }
+			]
+
+		}
+
+	}

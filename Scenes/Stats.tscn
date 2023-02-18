@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Stats.gd" type="Script" id=1]
 [ext_resource path="res://images/heartSprite.png" type="Texture" id=2]
-[ext_resource path="res://Sounds/oof.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/Effects/oof.mp3" type="AudioStream" id=3]
 [ext_resource path="res://images/ammoCrateSprite.png" type="Texture" id=4]
 [ext_resource path="res://images/ammo/sprite_2.png" type="Texture" id=5]
 [ext_resource path="res://images/ammo/sprite_0.png" type="Texture" id=6]
@@ -199,6 +199,17 @@ custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "00"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionLabel" type="Label" parent="ScoreNode"]
+margin_left = -272.0
+margin_right = -241.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "00/28"
 __meta__ = {
 "_edit_use_anchors_": false
 }

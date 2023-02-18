@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/619834__eponn__correct-menu-game-android.wav-7eeddecb7449cee0d8798d375b571193.sample"
+
+[deps]
+
+source_file="res://Sounds/619834__eponn__correct-menu-game-android.wav"
+dest_files=[ "res://.import/619834__eponn__correct-menu-game-android.wav-7eeddecb7449cee0d8798d375b571193.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

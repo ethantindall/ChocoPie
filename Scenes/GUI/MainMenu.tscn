@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://images/supremeleader.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/Black_Han_Sans/BlackHanSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/Noto_Sans_KR/NotoSansKR-Black.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/GUI/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://images/chocopie.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/Noto_Sans_KR/NotoSansKR-Light.otf" type="DynamicFontData" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.666667, 0.156863, 0.156863, 1 )
@@ -36,7 +37,7 @@ corner_radius_bottom_left = 100
 
 [sub_resource type="Theme" id=7]
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.529412, 0.529412, 0.529412, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -49,7 +50,7 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.298039, 0.298039, 0.298039, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -64,7 +65,7 @@ corner_radius_bottom_left = 100
 shadow_color = Color( 0.235294, 0.235294, 0.235294, 0.6 )
 shadow_offset = Vector2( 10, 10 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.592157, 0.592157, 0.592157, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -76,6 +77,10 @@ corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
+
+[sub_resource type="DynamicFont" id=11]
+extra_spacing_bottom = -4
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -105,7 +110,7 @@ polygon = PoolVector2Array( 131.181, 74.0758, 131.516, 117.612, 107.739, 117.947
 
 [node name="Panel3" type="Panel" parent="ColorRect"]
 margin_left = 10.0
-margin_top = 10.0
+margin_top = 22.0
 margin_right = 106.0
 margin_bottom = 56.0
 custom_styles/panel = SubResource( 1 )
@@ -115,9 +120,9 @@ __meta__ = {
 
 [node name="Panel2" type="Panel" parent="ColorRect/Panel3"]
 margin_left = 42.0
-margin_top = 37.1575
+margin_top = 25.1575
 margin_right = 54.0
-margin_bottom = 49.1575
+margin_bottom = 37.1575
 rect_rotation = 45.0
 theme = SubResource( 2 )
 custom_styles/panel = SubResource( 3 )
@@ -129,11 +134,11 @@ __meta__ = {
 anchor_top = 0.0110112
 anchor_bottom = 0.0110112
 margin_left = 2.0
-margin_top = 0.493485
+margin_top = 2.49348
 margin_right = 91.0
-margin_bottom = 40.4935
+margin_bottom = 42.4935
 custom_fonts/font = SubResource( 4 )
-text = "Comrade! The Southern imperialists are attacking our border with the evil baked goods of capitalism! You must save the homeland!"
+text = "동무! 남부 제국주의자들이 사악한 자본주의 빵으로 우리 국경을 공격하고 있어! 우리나라를 보호해야 해요!"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,14 +174,14 @@ vframes = 4
 frame = 5
 
 [node name="StartGameButton" type="Button" parent="."]
-margin_left = 253.722
-margin_top = 129.328
-margin_right = 303.722
-margin_bottom = 179.328
+margin_left = 171.052
+margin_top = 127.909
+margin_right = 221.052
+margin_bottom = 177.909
 theme = SubResource( 7 )
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -190,11 +195,12 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 240.416, 65.4074 )
+position = Vector2( 247.151, 62.8819 )
 rotation = -0.111701
 texture = ExtResource( 5 )
 
 [node name="LineEdit" type="LineEdit" parent="."]
+visible = false
 anchor_left = 0.436
 anchor_top = 0.782
 anchor_right = 0.723
@@ -203,7 +209,9 @@ margin_left = -0.156052
 margin_top = 0.0684204
 margin_right = 0.00393677
 margin_bottom = -0.0515747
-max_length = 3
+custom_fonts/font = SubResource( 11 )
+max_length = 6
+placeholder_text = "이름"
 __meta__ = {
 "_edit_use_anchors_": false
 }

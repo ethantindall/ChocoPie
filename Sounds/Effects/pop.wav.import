@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/gun.wav-9f48f9eeadd15c4535d1e1422bdf2e0a.sample"
+path="res://.import/pop.wav-378f54de2279bd1a1ebeb1894835f0d1.sample"
 
 [deps]
 
-source_file="res://Sounds/gun.wav"
-dest_files=[ "res://.import/gun.wav-9f48f9eeadd15c4535d1e1422bdf2e0a.sample" ]
+source_file="res://Sounds/Effects/pop.wav"
+dest_files=[ "res://.import/pop.wav-378f54de2279bd1a1ebeb1894835f0d1.sample" ]
 
 [params]
 

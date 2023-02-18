@@ -2,7 +2,7 @@
 
 [ext_resource path="res://images/grenade.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Targets/Grenade.gd" type="Script" id=2]
-[ext_resource path="res://Sounds/pop.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/Effects/pop.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 47.0168

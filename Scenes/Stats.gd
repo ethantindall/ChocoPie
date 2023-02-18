@@ -14,6 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$HealthNode/HealthBar.value = Global.health
+	$ScoreNode/QuestionLabel.text = str(Global.questionsAnswered) + "/28"
 	$AmmoNode/AmmoProgressBar.value = Global.ammo
 	if $HealthNode/HealthBar.value <= (Global.maxHealth * .3):
 		$HealthNode/HealthBar/AnimationPlayer.play("TakeDamage")
